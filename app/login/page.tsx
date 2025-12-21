@@ -30,7 +30,7 @@ export default function LoginPage() {
         return;
       }
 
-      login(data.user); 
+      login(data.user, data.token); 
       router.push("/");
     } catch {
       alert("Server tidak bisa dihubungi");
