@@ -7,7 +7,7 @@ export default function AdminPaketPage() {
   const [paket, setPaket] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/paket?per_page=1000")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paket?per_page=1000`)
       .then(res => res.json())
       .then(data => setPaket(data.data));
   }, []);
@@ -55,7 +55,7 @@ export default function AdminPaketPage() {
 function hapusPaket(id: number, setPaket: any) {
   if (!confirm("Yakin hapus paket?")) return;
 
-  fetch(`http://127.0.0.1:8000/api/paket/${id}`, {
+  fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paket/${id}`, {
     method: "DELETE",
   }).then(() => {
     setPaket((prev: any[]) => prev.filter(p => p.id !== id));

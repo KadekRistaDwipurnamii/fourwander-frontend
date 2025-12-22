@@ -103,7 +103,7 @@ export default function Testimonials() {
             className="min-w-[300px] bg-white rounded-2xl shadow hover:shadow-xl transition"
           >
             <img
-              src={`http://127.0.0.1:8000/images/review/${r.img}`}
+              src={`${process.env.NEXT_PUBLIC_API_URL}/images/review/${r.img}`}
               alt={r.name}
               className="h-44 w-full object-cover rounded-t-2xl"
             />

@@ -14,7 +14,7 @@ export default function AdminDashboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/admin/dashboard")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/dashboard`)
       .then((res) => res.json())
       .then((res) => {
         setData(res);

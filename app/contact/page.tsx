@@ -10,7 +10,7 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
 
   const saveToDB = async (via: "email" | "whatsapp") => {
-    await fetch("http://127.0.0.1:8000/api/contact", {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, message, via }),

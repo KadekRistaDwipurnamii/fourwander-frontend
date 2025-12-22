@@ -16,7 +16,7 @@ export default function TourPackages() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/paket?per_page=3")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paket?per_page=3`)
       .then((res) => res.json())
       .then((data) => {
         const items = data.data ?? data;

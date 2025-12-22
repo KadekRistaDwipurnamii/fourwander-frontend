@@ -39,7 +39,7 @@ export default function PaketClient() {
     if (maxHarga) params.append("max_harga", maxHarga);
 
     fetch(
-      `http://127.0.0.1:8000/api/paket?page=${page}&${params.toString()}`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/paket?page=${page}&${params.toString()}`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -6,7 +6,7 @@ export default function AdminBookingPage() {
   const [booking, setBooking] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/admin/bookings")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/bookings`)
       .then(res => res.json())
       .then(data => setBooking(data.data ?? data));
   }, []);
