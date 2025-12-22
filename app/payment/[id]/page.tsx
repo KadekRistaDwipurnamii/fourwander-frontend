@@ -35,7 +35,7 @@ export default function PaymentPage() {
 
     try {
       const res = await fetch(
-        `http://localhost:8000/api/booking/${id}/payment`,
+        `https://fourwander-backend-production.up.railway.app/api/booking/${id}/payment`,
         {
           method: "POST",
           headers: {
@@ -166,7 +166,7 @@ export default function PaymentPage() {
             {ewalletType && (
               <div className="bg-white p-3 rounded-xl border text-sm">
                 <p className="font-semibold">{ewalletType} - Fourwander</p>
-                <p>08xxxxxxxxxx</p>
+                <p>089508685114</p>
                 <p>a.n Fourwander Travel</p>
               </div>
             )}
