@@ -101,7 +101,7 @@ export default function PaketClient() {
           Apply Filter
         </button>
       </div>
-
+      <div className="max-w-7xl mx-auto px-6 py-10">   
       {/* LIST */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {paket.map((p) => (
@@ -132,27 +132,30 @@ export default function PaketClient() {
             </div>
           </div>
         ))}
-        {/* PAGINATION */}
-        <div className="flex justify-center items-center gap-4 mt-10">
-          <button
-            disabled={page === 1}
-            onClick={() => setPage((p) => p - 1)}
-            className="px-4 py-2 rounded bg-gray-200 disabled:opacity-50"
-          >
-            Previous
-          </button>
+        {/* ✅ PAGINATION FULL WIDTH */}
+        <div className="w-full flex justify-center mt-12">
+          <div className="flex items-center gap-6">
+            <button
+              disabled={page === 1}
+              onClick={() => setPage(page - 1)}
+              className="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+            >
+              Previous
+            </button>
 
-          <span className="font-semibold">
-            Page {page} of {lastPage}
-          </span>
+            <span className="font-semibold">
+              Page {page} of {lastPage}
+            </span>
 
-          <button
-            disabled={page === lastPage}
-            onClick={() => setPage((p) => p + 1)}
-            className="px-4 py-2 rounded bg-gray-200 disabled:opacity-50"
-          >
-            Next
-          </button>
+            <button
+              disabled={page === lastPage}
+              onClick={() => setPage(page + 1)}
+              className="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+            >
+              Next
+            </button>
+          </div>
+        </div>
         </div>
       </div>
     </div>
