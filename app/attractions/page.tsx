@@ -5,7 +5,7 @@ const attractions = [
   { name: "Kintamani", desc: "Volcano views & cool mountain air", image: "/batur.jpg" },
   { name: "Bedugul", desc: "Lakes & temples in the highlands", image: "/ulun_danu.jpg" },
   { name: "Uluwatu", desc: "Cliffs, sunset & Kecak dance", image: "/uluwatu.jpg" },
-  { name: "Nusa Penida", desc: "Dramatic cliffs & blue ocean", image: "/nuspen.jpg" },
+  { name: "Nusa Penida", desc: "Dramatic cliffs & blue ocean", image: "/Nuspen.jpg" },
   { name: "Tanah Lot", desc: "Iconic sea temple at sunset", image: "/tanahlot.jpg" },
 ];
 

@@ -132,6 +132,28 @@ export default function PaketClient() {
             </div>
           </div>
         ))}
+        {/* PAGINATION */}
+        <div className="flex justify-center items-center gap-4 mt-10">
+          <button
+            disabled={page === 1}
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            className="px-4 py-2 rounded bg-gray-200 disabled:opacity-50"
+          >
+            Previous
+          </button>
+
+          <span className="font-semibold">
+            Page {page} of {lastPage}
+          </span>
+
+          <button
+            disabled={page === lastPage}
+            onClick={() => setPage((p) => Math.min(p + 1, lastPage))}
+            className="px-4 py-2 rounded bg-gray-200 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );
