@@ -100,8 +100,7 @@ export default function PaketClient() {
         >
           Apply Filter
         </button>
-      </div>
-      <div className="max-w-7xl mx-auto px-6 py-10">   
+      </div>  
       {/* LIST */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {paket.map((p) => (
@@ -132,6 +131,7 @@ export default function PaketClient() {
             </div>
           </div>
         ))}
+        </div>
         {/* ✅ PAGINATION FULL WIDTH */}
         <div className="w-full flex justify-center mt-12">
           <div className="flex items-center gap-6">
@@ -156,8 +156,6 @@ export default function PaketClient() {
             </button>
           </div>
         </div>
-        </div>
       </div>
-    </div>
   );
 }
