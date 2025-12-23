@@ -136,7 +136,7 @@ export default function PaketClient() {
         <div className="flex justify-center items-center gap-4 mt-10">
           <button
             disabled={page === 1}
-            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            onClick={() => setPage((p) => p - 1)}
             className="px-4 py-2 rounded bg-gray-200 disabled:opacity-50"
           >
             Previous
@@ -148,7 +148,7 @@ export default function PaketClient() {
 
           <button
             disabled={page === lastPage}
-            onClick={() => setPage((p) => Math.min(p + 1, lastPage))}
+            onClick={() => setPage((p) => p + 1)}
             className="px-4 py-2 rounded bg-gray-200 disabled:opacity-50"
           >
             Next
