@@ -14,7 +14,7 @@ const reviews = [
     name: "David P.",
     country: "Australia, Nov 2023",
     text: "Nusa Penida tour was breathtaking!",
-    img: "nuspenreview.jpg",
+    img: "Nuspenreview.jpg",
     rating: 5,
   },
   {
