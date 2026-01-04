@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import router from "next/dist/shared/lib/router/router";
 
 type PaketDetail = {
   id: number;
@@ -26,6 +27,8 @@ export default function PaketDetailPage() {
   const [paket, setPaket] = useState<PaketDetail | null>(null);
   const [tanggal, setTanggal] = useState("");
   const [jumlahOrang, setJumlahOrang] = useState(1);
+
+  const router = useRouter();
 
   useEffect(() => {
     if (!id) return;
@@ -181,9 +184,13 @@ export default function PaketDetailPage() {
       </div>
 
       {/* CTA */}
-      <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl text-lg font-semibold shadow-lg">
-        Book Now
-      </button>
+      <button
+          onClick={() => router.push("/booknow")}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl text-lg font-semibold shadow-lg"
+        >
+          Book Now
+        </button>
+
     </div>
   );
 }
