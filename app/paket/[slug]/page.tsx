@@ -22,13 +22,15 @@ type PaketDetail = {
 
 export default function PaketDetailPage() {
   const params = useParams();
-const slug = params?.slug as string;
+  const slug = params?.slug as string;
   const [paket, setPaket] = useState<PaketDetail | null>(null);
   const { addToCart } = useCart();
   const [tanggal, setTanggal] = useState("");
   const [jumlahOrang, setJumlahOrang] = useState(1);
 
   useEffect(() => {
+    if (!slug) return;
+    
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paket/slug/${slug}`)
       .then(res => res.json())
       .then(data => {
