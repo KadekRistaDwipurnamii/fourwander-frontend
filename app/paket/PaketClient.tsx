@@ -7,7 +7,6 @@ import { useSearchParams } from "next/navigation";
 type Paket = {
   id: number;
   nama: string;
-  slug: string;
   durasi: string;
   harga: number;
   kategori: string;
