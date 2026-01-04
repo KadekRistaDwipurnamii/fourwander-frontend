@@ -28,7 +28,7 @@ export default function PaketDetailPage() {
   const [jumlahOrang, setJumlahOrang] = useState(1);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paket/${slug}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paket/slug/${slug}`)
       .then(res => res.json())
       .then(data => {
         setPaket({
