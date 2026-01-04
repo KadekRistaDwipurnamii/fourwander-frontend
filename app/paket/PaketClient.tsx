@@ -124,7 +124,7 @@ export default function PaketClient() {
               </p>
 
               <Link
-                href={`/paket/${p.slug}`}
+                href={`/paket/${p.id}`}
                 className="mt-auto bg-yellow-400 py-2 rounded font-semibold text-center"
               >
                 View Detail
