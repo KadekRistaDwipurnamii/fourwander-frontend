@@ -35,6 +35,7 @@ export default function BookNowClient() {
   /* ================= STATE ================= */
   const [paketList, setPaketList] = useState<Paket[]>([]);
   const [paketId, setPaketId] = useState<number | "">("");
+  const [detailPaket, setDetailPaket] = useState<Paket | null>(null);
 
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
@@ -69,24 +70,32 @@ export default function BookNowClient() {
     }
   }, [selected]);
 
-  /* ================= FETCH PAKET ================= */
+  /* ================= FETCH LIST PAKET ================= */
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paket?per_page=1000`)
       .then((res) => res.json())
       .then((data) => setPaketList(data.data ?? data));
   }, []);
 
+  /* ================= FETCH DETAIL PAKET ================= */
+  useEffect(() => {
+    if (!paketId) {
+      setDetailPaket(null);
+      return;
+    }
+
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/paket/${paketId}`)
+      .then((res) => res.json())
+      .then((data) => setDetailPaket(data.paket));
+  }, [paketId]);
+
   const paketTerpilih = paketList.find((p) => p.id === paketId);
 
   /* ================= HITUNG HARGA ================= */
-  const hargaPaket = paketTerpilih?.harga ?? 0;
-  const diskon = paketTerpilih?.diskon ?? 0;
+  const hargaPaket = detailPaket?.harga ?? paketTerpilih?.harga ?? 0;
+  const diskon = detailPaket?.diskon ?? paketTerpilih?.diskon ?? 0;
 
-  const totalExtra = extra.reduce(
-    (sum, e) => sum + extraHarga[e],
-    0
-  );
-
+  const totalExtra = extra.reduce((sum, e) => sum + extraHarga[e], 0);
   const subtotal = hargaPaket * jumlahOrang + totalExtra;
   const totalAkhir = Math.max(0, subtotal - diskon);
 
@@ -127,15 +136,18 @@ export default function BookNowClient() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/booking`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/booking`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const data = await res.json();
 
@@ -183,6 +195,29 @@ export default function BookNowClient() {
           </select>
         </section>
 
+        {/* DETAIL PAKET */}
+        {detailPaket && (
+          <section className="space-y-4">
+            <div className="bg-slate-50 border rounded-xl p-4">
+              <h3 className="font-semibold mb-2">Fasilitas yang Didapat</h3>
+              <ul className="list-disc pl-5 space-y-1">
+                {detailPaket.fasilitas?.map((f, i) => (
+                  <li key={i}>{f}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-slate-50 border rounded-xl p-4">
+              <h3 className="font-semibold mb-2">Itinerary Perjalanan</h3>
+              <ol className="list-decimal pl-5 space-y-1">
+                {detailPaket.itinerary?.map((it, i) => (
+                  <li key={i}>{it}</li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        )}
+
         {/* EXTRA */}
         <section className="space-y-2">
           <h2 className="font-semibold text-lg">Tambahan Paket</h2>
@@ -196,7 +231,7 @@ export default function BookNowClient() {
 
         {/* RINGKASAN */}
         <div className="bg-[#EFF6FF] p-4 rounded-xl space-y-1">
-          <p>Paket: <b>{paketTerpilih?.nama ?? "-"}</b></p>
+          <p>Paket: <b>{detailPaket?.nama ?? "-"}</b></p>
           <p>Subtotal: Rp {subtotal.toLocaleString("id-ID")}</p>
 
           {diskon > 0 && (
