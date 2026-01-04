@@ -1,15 +1,15 @@
 export default function sitemap() {
   return [
     {
-      url: "https://www.fourwander.my.id",
+      url: "https://fourwander.my.id",
       lastModified: new Date(),
     },
     {
-      url: "https://www.fourwander.my.id/paket",
+      url: "https://fourwander.my.id/paket",
       lastModified: new Date(),
     },
     {
-      url: "https://www.fourwander.my.id/about",
+      url: "https://fourwander.my.id/about",
       lastModified: new Date(),
     },
   ];
