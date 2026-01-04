@@ -21,7 +21,8 @@ type PaketDetail = {
 };
 
 export default function PaketDetailPage() {
-  const { slug } = useParams();
+  const params = useParams();
+const slug = params?.slug as string;
   const [paket, setPaket] = useState<PaketDetail | null>(null);
   const { addToCart } = useCart();
   const [tanggal, setTanggal] = useState("");
