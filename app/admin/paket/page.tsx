@@ -32,7 +32,7 @@ export default function AdminPaketPage() {
 
             <div className="flex gap-2 mt-2">
               <Link
-                href={`/admin/paket/form?id=${p.id}`}
+                href={`/admin/paket/edit/${p.id}`}
                 className="text-blue-600"
               >
                 Edit
