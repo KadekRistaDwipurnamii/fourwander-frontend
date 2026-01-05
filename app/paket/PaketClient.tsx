@@ -69,7 +69,7 @@ export default function PaketClient() {
           value={kategori}
           onChange={(e) => setKategori(e.target.value)}
         >
-          <option value="">Semua Kategori</option>
+          <option value="">Semua Jenis</option>
           <option value="One-Day">One-Day</option>
           <option value="Island Tour">Island Tour</option>
           <option value="Full Trip">Full Trip</option>
