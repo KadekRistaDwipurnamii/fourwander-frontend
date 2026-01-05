@@ -40,6 +40,7 @@ export default function EditPaketPage() {
     });
 
     router.push("/admin/paket");
+    router.refresh();
   };
 
   if (loading) {
